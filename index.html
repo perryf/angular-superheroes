@@ -13,11 +13,14 @@
     <input type="text" name="search" ng-model="search">
     <p>{{search}}</p>
     <ul>
-      <li ng-repeat="heroes in vm.heroes | filter: search">
-          <h2>{{heroes.name}}</h2>
-          <p>{{heroes.phonenumber}}</p>
-          </p>{{heroes.comics_affiliation}}</p>
-          <img ng-src="{{heroes.img_url}}">
+      <li ng-repeat="hero in vm.heroes | filter: search">
+        <div ng-class="hero.comics_affiliation === 'DC' ? 'dc' : 'marvel'">
+          <h2>{{hero.name}}</h2>
+          <input type="checkbox" ng-model="show">
+          <p>{{hero.phonenumber}}</p>
+          </p>{{hero.comics_affiliation}}</p>
+          <img ng-show="show" ng-src="{{hero.img_url}}">
+        </div>
       </li>
     </ul>
   </section>
