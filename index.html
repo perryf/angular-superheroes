@@ -10,14 +10,14 @@
 <body ng-app="superApp">
   <h1>Super Heros</h1>
   <section ng-controller="SupersController as vm">
+    <input type="text" name="search" ng-model="search">
+    <p>{{search}}</p>
     <ul>
-      <li ng-repeat="heroes in vm.heroes">
-        <div class="hero-box">
+      <li ng-repeat="heroes in vm.heroes | filter: search">
           <h2>{{heroes.name}}</h2>
           <p>{{heroes.phonenumber}}</p>
           </p>{{heroes.comics_affiliation}}</p>
           <img ng-src="{{heroes.img_url}}">
-        </div>
       </li>
     </ul>
   </section>
